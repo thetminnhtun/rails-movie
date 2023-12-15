@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  poster_url: MyString
+  trailer_url: MyString
+  release_date: 2023-12-15
+  country: MyString
+  director: MyString
+  production: MyString
+  duration_minutes: 1
+
+two:
+  title: MyString
+  description: MyText
+  poster_url: MyString
+  trailer_url: MyString
+  release_date: 2023-12-15
+  country: MyString
+  director: MyString
+  production: MyString
+  duration_minutes: 1

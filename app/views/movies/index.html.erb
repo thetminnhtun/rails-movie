@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Movies</h1>
+
+<div id="movies">
+  <% @movies.each do |movie| %>
+    <%= link_to movie, class: 'box' do %>
+      <div id="<%= dom_id movie %>">
+        <p>
+          <strong>Title:</strong>
+          <%= movie.title %>
+        </p>
+      
+        <p>
+          <%= Date.parse(movie.release_date.to_s).strftime("%Y") %> | 
+          <%= humanized_duration(movie.duration_minutes) %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= paginate @movies %>
