@@ -13,11 +13,4 @@
  *= require_tree .
  *= require_self
  */
-.box {
-    display: block;
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px;
-}
+ 

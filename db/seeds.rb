@@ -9,7 +9,6 @@ Movie.destroy_all
   Movie.create!(
     title: "Title #{index}",
     description: "Description #{index}",
-    poster_url: nil,
     trailer_url: nil,
     release_date: "2022-01-01",
     country: "Description #{index}",
