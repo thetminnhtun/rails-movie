@@ -6,6 +6,10 @@
   <% @movies.each do |movie| %>
     <%= link_to movie, class: 'box' do %>
       <div id="<%= dom_id movie %>">
+        <% if movie.poster.attached? %>
+          <%= image_tag movie.poster %>
+        <% end %>
+
         <p>
           <strong>Title:</strong>
           <%= movie.title %>

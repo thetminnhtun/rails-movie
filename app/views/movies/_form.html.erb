@@ -12,6 +12,15 @@
   <% end %>
 
   <div>
+    <% if movie.poster.attached? %>
+      <%= image_tag movie.poster %>
+    <% end %>
+
+    <%= form.label :poster, style: "display: block" %>
+    <%= form.file_field :poster %>
+  </div>
+
+  <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
@@ -19,11 +28,6 @@
   <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :poster_url, style: "display: block" %>
-    <%= form.text_field :poster_url %>
   </div>
 
   <div>

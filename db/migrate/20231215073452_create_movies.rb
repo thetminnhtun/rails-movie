@@ -3,7 +3,6 @@ class CreateMovies < ActiveRecord::Migration[7.0]
     create_table :movies do |t|
       t.string :title
       t.text :description
-      t.string :poster_url
       t.string :trailer_url
       t.date :release_date
       t.string :country
