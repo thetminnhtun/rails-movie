@@ -1,0 +1,15 @@
+<!-- Search -->
+<div class="absolute w-1/3 left-0 right-0 mx-auto top-[-68px] shadow">
+    <%= form_tag(movies_path, method: :get, class: "text-white w-full") do %>
+        <div class="relative">
+            <%= text_field_tag(:search, params[:search],
+                               placeholder: "Search movie...",
+                               class: "w-full bg-zinc-700 p-4 rounded-lg focus:ring-white focus:border-white") %>
+            <button type="submit">
+                <svg class="absolute top-[17px] right-3 w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+            </button>
+        </div>
+    <% end %>
+</div>
