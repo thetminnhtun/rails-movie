@@ -14,19 +14,19 @@
         <!-- Menu -->
         <div class="">
             <ul class="flex space-x-5">
-                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(root_path) || current_page?(movies_path) %>">
+                <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(root_path) || current_page?(movies_path) %>">
                     <%= link_to "Movies", movies_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
                     <%= link_to "Create Movie", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
                     <%= link_to "User", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
                     <%= link_to "Login", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
                     <%= link_to "Logout", new_movie_path %>
                 </li>
             </ul>
