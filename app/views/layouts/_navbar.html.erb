@@ -7,26 +7,24 @@
                     <path id="Exclusion_1" data-name="Exclusion 1" d="M18,28H5a5.006,5.006,0,0,1-5-5V10A10.011,10.011,0,0,1,10,0H23a5.006,5.006,0,0,1,5,5V18A10.011,10.011,0,0,1,18,28ZM10.621,8a1.16,1.16,0,0,0-.772.29,1.088,1.088,0,0,0-.35.832v9.753a1.122,1.122,0,0,0,1.7.968l8.251-4.875a1.124,1.124,0,0,0,0-1.936L11.2,8.153A1.13,1.13,0,0,0,10.621,8Z" fill="#fff"/>
                 </svg>
             </div>
-            <div class="font-bold">
-                MTM Movie
-            </div>
+            <%= link_to "MTM Movie", root_path, class: "font-bold" %>
         </div>
         <!-- Menu -->
         <div class="">
-            <ul class="flex space-x-3">
-                <li class="hover:text-gray-300 <%= 'underline underline-offset-4' if current_page?(root_path) || current_page?(movies_path) %>">
-                    <%= link_to "Home", root_path %>
+            <ul class="flex space-x-5">
+                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(root_path) || current_page?(movies_path) %>">
+                    <%= link_to "Movies", movies_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= 'underline underline-offset-4' if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
                     <%= link_to "Create Movie", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= 'underline underline-offset-4' if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
                     <%= link_to "User", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= 'underline underline-offset-4' if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
                     <%= link_to "Login", new_movie_path %>
                 </li>
-                <li class="hover:text-gray-300 <%= 'underline underline-offset-4' if current_page?(new_movie_path) %>">
+                <li class="hover:text-gray-300 <%= "underline underline-offset-4" if current_page?(new_movie_path) %>">
                     <%= link_to "Logout", new_movie_path %>
                 </li>
             </ul>
