@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<div class="max-w-7xl mx-auto relative pt-20">
+  <%= render "search" %>
+  
+  <% if notice %>
+    <div class="text-green-500 text-center mb-10"><%= notice %></div>
+  <% end %>
 
-<%= render @movie %>
-
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-  <br><br>
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+  <%= render @movie %>
 </div>

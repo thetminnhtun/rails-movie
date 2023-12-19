@@ -1,49 +1,58 @@
-<div id="<%= dom_id movie %>">
-  <p>
-    <strong>Title:</strong>
-    <%= movie.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= movie.description %>
-  </p>
-
-  <p>
-    <strong>Poster url:</strong>
-    <% if(movie.poster.attached?) %>
-      <%= image_tag movie.poster %>
+<div id="<%= dom_id movie %>" class="flex">
+  <div class="w-1/3 pr-5">
+    <% if (movie.poster.attached?) %>
+      <%= image_tag movie.poster, class: "rounded mx-auto" %>
+    <% else %>
+      <%= image_tag "https://placehold.co/300x400", class: "rounded mx-auto" %>
     <% end %>
-  </p>
+  </div>
+  <div class="w-2/3 pl-5">
+    <div class="flex items-center justify-between">
+      <h3 class="font-bold text-2xl"><%= movie.title %></h3>
+      <div class="flex items-center space-x-2">
+        <%= link_to "Edit", edit_movie_path(@movie), class: "bg-zinc-700 hover:bg-zinc-600 text-white px-3 py-2 rounded" %>
+        <%= link_to "Delete",
+                    @movie,
+                    data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?",
+                    },
+                    class: "bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded" %>
+      </div>
+    </div>
+    <div class="text-gray-300">
+      <p class="my-5"><%= movie.description %></p>
+      <div class="space-y-3">
+        <div class="flex">
+          <div class="w-1/3">Release</div>
+          <div class="mx-5">:</div>
+          <div class="flex-1"><%= movie.release_date %></div>
+        </div>
 
-  <p>
-    <strong>Trailer url:</strong>
-    <%= movie.trailer_url %>
-  </p>
+        <div class="flex">
+          <div class="w-1/3">Country</div>
+          <div class="mx-5">:</div>
+          <div class="flex-1"><%= movie.country %></div>
+        </div>
 
-  <p>
-    <strong>Release date:</strong>
-    <%= movie.release_date %>
-  </p>
+        <div class="flex">
+          <div class="w-1/3">Director</div>
+          <div class="mx-5">:</div>
+          <div class="flex-1"><%= movie.director %></div>
+        </div>
 
-  <p>
-    <strong>Country:</strong>
-    <%= movie.country %>
-  </p>
+        <div class="flex">
+          <div class="w-1/3">Production</div>
+          <div class="mx-5">:</div>
+          <div class="flex-1 "><%= movie.production %></div>
+        </div>
 
-  <p>
-    <strong>Director:</strong>
-    <%= movie.director %>
-  </p>
-
-  <p>
-    <strong>Production:</strong>
-    <%= movie.production %>
-  </p>
-
-  <p>
-    <strong>Duration minutes:</strong>
-    <%= movie.duration_minutes %>
-  </p>
-
+        <div class="flex">
+          <div class="w-1/3">Duration</div>
+          <div class="mx-5">:</div>
+          <div class="flex-1"><%= humanized_duration(movie.duration_minutes) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
