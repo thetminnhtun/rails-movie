@@ -6,7 +6,7 @@
 
 <h1 class="text-2xl mb-10 border-l-4 border-white pl-2">Movies</h1>
 
-<div id="movies" class="flex flex-wrap -mx-2">
+<div id="movies" class="flex flex-wrap -mx-2 mb-5">
   <% @movies.each do |movie| %>
   <div class="px-2 w-1/6 mb-8 group">
     <%= link_to movie do %>
@@ -34,6 +34,6 @@
   <% end %>
 </div>
 
-<%= paginate @movies %>
-
+<div class="flex items-center justify-center">
+  <%= paginate @movies %>
 </div>
