@@ -21,14 +21,14 @@
           <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
             <%= link_to "Create Movie", new_movie_path %>
           </li>
-          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
-            <%= link_to current_user.email, edit_user_registration_path %>
+          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(edit_user_registration_path) %>">
+            <%= link_to current_user.name, edit_user_registration_path %>
           </li>
-          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
+          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(destroy_user_session_path) %>">
             <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
           </li>
         <% else %>
-          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
+          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_user_session_path) %>">
             <%= link_to "Login", new_user_session_path %>
           </li>
         <% end %>
