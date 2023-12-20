@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 gem "kaminari", "~> 1.2", ">= 1.2.2"
 gem "devise", "~> 4.9", ">= 4.9.3"
 gem "htmlbeautifier"
+gem "faker", "~> 3.2", ">= 3.2.2"
 # Use Sass to process CSS
 # gem "sassc-rails"
 

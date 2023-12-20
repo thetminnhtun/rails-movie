@@ -3,120 +3,109 @@
     <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
   </div>
 <% end %>
-
 <%= form_with(model: movie, class: "flex flex-wrap") do |form| %>
-
-    <!--Left poster-->
-    <div class="w-1/3 pr-5">
-      <div class="">
-          <label class="block text-center">Cover photo</label>
-          <%= form.label :poster, class: "cursor-pointer mt-2 flex justify-center rounded-lg border border-dashed border-white bg-zinc-700 px-6 py-10" do %>
-            <div class="text-center">
-              <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-              </svg>
-              <div class="mt-4 flex text-sm leading-6 text-gray-500">
-                  <span class="text-white">Upload a file</span>
-                  <%= form.file_field :poster, class: "sr-only" %>
-                  <p class="pl-1">or drag and drop</p>
-              </div>
-              <p class="text-xs leading-5 text-gray-500">PNG, JPG, GIF up to 10MB</p>
-            </div>
-          <% end %>
-      </div>
-
-      <% if movie.poster.attached? %>
-        <%= image_tag movie.poster, class: "mt-5" %>
+  <!--Left poster-->
+  <div class="w-1/3 pr-5">
+    <div class="">
+      <label class="block text-center">Cover photo</label>
+      <%= form.label :poster, class: "cursor-pointer mt-2 flex justify-center rounded-lg border border-dashed border-white bg-zinc-700 px-6 py-10" do %>
+        <div class="text-center">
+          <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+          </svg>
+          <div class="mt-4 flex text-sm leading-6 text-gray-500">
+            <span class="text-white">Upload a file</span>
+            <%= form.file_field :poster, class: "sr-only" %>
+            <p class="pl-1">or drag and drop</p>
+          </div>
+          <p class="text-xs leading-5 text-gray-500">PNG, JPG, GIF up to 10MB</p>
+        </div>
       <% end %>
     </div>
-    <!--Right input-->
-    <div class="w-2/3 pl-5">
-      <div>
-        <%= form.label :title, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
-        <%= form.text_field :title,
+    <% if movie.poster.attached? %>
+      <%= image_tag movie.poster, class: "mt-5" %>
+    <% end %>
+  </div>
+  <!--Right input-->
+  <div class="w-2/3 pl-5">
+    <div>
+      <%= form.label :title, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= form.text_field :title,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
                             placeholder: "Movie title" %>
-        <% movie.errors.full_messages_for(:title).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label :description, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
-        <%= form.text_area :description,
+      <% movie.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label :description, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= form.text_area :description,
                            rows: 5,
                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
                            placeholder: "Description..." %>
-        <% movie.errors.full_messages_for(:description).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label :release_date, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
-        <%= form.date_field :release_date,
+      <% movie.errors.full_messages_for(:description).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label :release_date, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= form.date_field :release_date,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
                             placeholder: "mm/dd/yyyy" %>
-        <% movie.errors.full_messages_for(:release_date).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label "Duration (Minutes)", class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
-        <%= form.number_field :duration_minutes,
+      <% movie.errors.full_messages_for(:release_date).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label "Duration (Minutes)", class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= form.number_field :duration_minutes,
                               class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
                               placeholder: "Minutes" %>
-        <% movie.errors.full_messages_for(:duration_minutes).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label :country %>
-        <%= form.text_field :country,
+      <% movie.errors.full_messages_for(:duration_minutes).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label :country %>
+      <%= form.text_field :country,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
                             placeholder: "Country" %>
-        <% movie.errors.full_messages_for(:country).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label :production %>
-        <%= form.text_field :production,
-                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
-                            placeholder: "" %>
-        <% movie.errors.full_messages_for(:production).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label :director %>
-        <%= form.text_field :director,
-                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
-                            placeholder: "" %>
-        <% movie.errors.full_messages_for(:director).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
-
-      <div class="mt-5">
-        <%= form.label "Trailer URL" %>
-        <%= form.text_field :trailer_url,
-                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
-                            placeholder: "" %>
-        <% movie.errors.full_messages_for(:trailer_url).each do |message| %>
-          <div class="text-red-500 mt-2"><%= message %></div>
-        <% end %>
-      </div>
+      <% movie.errors.full_messages_for(:country).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
     </div>
-
-    <div class="w-full flex justify-end mt-5">
-      <%= link_to "Cancel",
+    <div class="mt-5">
+      <%= form.label :production %>
+      <%= form.text_field :production,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "" %>
+      <% movie.errors.full_messages_for(:production).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label :director %>
+      <%= form.text_field :director,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "" %>
+      <% movie.errors.full_messages_for(:director).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5">
+      <%= form.label "Trailer URL" %>
+      <%= form.text_field :trailer_url,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "" %>
+      <% movie.errors.full_messages_for(:trailer_url).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="w-full flex justify-end mt-5">
+    <%= link_to "Cancel",
                   params[:action] == "new" ? movies_path : movie,
                   class: "py-2 px-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg mr-2" %>
-      <%= form.submit(params[:action] == "new" ? "Publish" : "Update", class: "cursor-pointer py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg") %>
-    </div>
+    <%= form.submit(params[:action] == "new" ? "Publish" : "Update", class: "cursor-pointer py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg") %>
+  </div>
 <% end %>

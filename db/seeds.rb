@@ -3,19 +3,19 @@
 #
 # Examples:
 #
-Movie.destroy_all
+# Movie.destroy_all
 
-100.times do |index|
-  Movie.create!(
-    title: "Title #{index}",
-    description: "Description #{index}",
-    trailer_url: nil,
-    release_date: "2022-01-01",
-    country: "Description #{index}",
-    director: "Description #{index}",
-    production: "Description #{index}",
-    duration_minutes: 90,
-  )
-end
+# 100.times do |index|
+#   Movie.create!(
+#     title: "Title #{index}",
+#     description: "Description #{index}",
+#     trailer_url: nil,
+#     release_date: "2022-01-01",
+#     country: "Country #{index}",
+#     director: "Director #{index}",
+#     production: "Production #{index}",
+#     duration_minutes: 90,
+#   )
+# end
 
-puts "Created #{Movie.count} movies"
+# puts "Created #{Movie.count} movies"

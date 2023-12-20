@@ -4,11 +4,9 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    if params[:search].present?
-      @movies = Movie.with_filter(params[:search]).order(id: :desc).page(params[:page])
-    else
-      @movies = Movie.order(id: :desc).page(params[:page])
-    end
+    @movies = Movie.with_filter(params[:search])
+      .order(id: :desc)
+      .page(params[:page])
   end
 
   # GET /movies/1 or /movies/1.json

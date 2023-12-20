@@ -1,0 +1,39 @@
+<%= form_with(model: user, class: "contents") do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation" class="text-red-500 mb-5">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    </div>
+  <% end %>
+  <div>
+    <%= form.label :name, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+    <%= form.text_field :name,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "Enter name" %>
+    <% user.errors.full_messages_for(:name).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mt-5">
+    <%= form.label :email, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+    <%= form.email_field :email,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "Enter email" %>
+    <% user.errors.full_messages_for(:email).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mt-5">
+    <%= form.label :password, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+    <%= form.password_field :password,
+                            class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "Enter password" %>
+    <% user.errors.full_messages_for(:password).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="w-full flex justify-end mt-5">
+    <%= link_to "Cancel", users_path,
+                  class: "py-2 px-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg mr-2" %>
+    <%= form.submit(params[:action] == "new" ? "Create" : "Update", class: "cursor-pointer py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg") %>
+  </div>
+<% end %>
