@@ -24,7 +24,7 @@ namespace :seed do
     Movie.destroy_all
 
     images = 11.times.to_a
-    5.times do |index|
+    50.times do |index|
       movie = Movie.create!(
         title: Faker::Name.name,
         description: Faker::Lorem.paragraph_by_chars,
