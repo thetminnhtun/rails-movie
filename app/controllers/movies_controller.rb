@@ -5,6 +5,8 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     @movies = Movie.with_filter(params[:search])
+    # .includes(poster_attachment: :blob)
+      .with_attached_poster
       .order(id: :desc)
       .page(params[:page])
   end
@@ -53,6 +55,7 @@ class MoviesController < ApplicationController
   # DELETE /movies/1 or /movies/1.json
   def destroy
     @movie.destroy
+    @movie.poster.purge
 
     respond_to do |format|
       format.html { redirect_to movies_url, notice: "Movie was successfully destroyed." }
