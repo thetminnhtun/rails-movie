@@ -1,13 +1,7 @@
 namespace :seed do
   desc "Seeds"
   task users: :environment do
-    User.destroy_all
-
-    User.create!(
-      name: "Admin",
-      email: "admin@admin.com",
-      password: "123123",
-    )
+    User.where.not(name: "Admin").destroy_all
 
     50.times do |index|
       User.create!(

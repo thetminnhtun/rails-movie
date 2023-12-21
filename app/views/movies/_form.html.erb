@@ -27,8 +27,8 @@
     <% end %>
   </div>
   <!--Right input-->
-  <div class="w-2/3 pl-5">
-    <div>
+  <div class="w-2/3 pl-5 flex flex-wrap bg-red-300">
+    <div class="w-full px-2">
       <%= form.label :title, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
       <%= form.text_field :title,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -37,7 +37,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-full px-2">
       <%= form.label :description, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
       <%= form.text_area :description,
                            rows: 5,
@@ -47,7 +47,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-1/2 px-2">
       <%= form.label :release_date, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
       <%= form.date_field :release_date,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -56,7 +56,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-1/2 px-2">
       <%= form.label "Duration (Minutes)", class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
       <%= form.number_field :duration_minutes,
                               class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -65,7 +65,17 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-1/2 px-2">
+      <%= form.label :genre, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= form.collection_select(:genre_ids, Genre.all, :id, :name, {prompt: true}, { 
+        multiple: true,
+        class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white"
+      }) %>
+      <% movie.errors.full_messages_for(:genre_ids).each do |message| %>
+        <div class="text-red-500 mt-2"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="mt-5 w-1/2 px-2">
       <%= form.label :country %>
       <%= form.text_field :country,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -74,7 +84,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-1/2 px-2">
       <%= form.label :production %>
       <%= form.text_field :production,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -83,7 +93,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-1/2 px-2">
       <%= form.label :director %>
       <%= form.text_field :director,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
@@ -92,7 +102,7 @@
         <div class="text-red-500 mt-2"><%= message %></div>
       <% end %>
     </div>
-    <div class="mt-5">
+    <div class="mt-5 w-full px-2">
       <%= form.label "Trailer URL" %>
       <%= form.text_field :trailer_url,
                             class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",

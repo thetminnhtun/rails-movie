@@ -1,4 +1,4 @@
-<div class="bg-zinc-500 text-white">
+<div class="bg-zinc-500 text-white bg-[url('/img/header.png')]">
   <div class="flex justify-between max-w-7xl mx-auto h-[160px] pt-[40px]">
     <!-- Logo & brand -->
     <div>
@@ -20,6 +20,9 @@
         <% if user_signed_in? %>
           <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(new_movie_path) %>">
             <%= link_to "Add Movie", new_movie_path %>
+          </li>
+          <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(genres_path) %>">
+            <%= link_to "Genres", genres_path %>
           </li>
           <li class="hover:text-gray-300 <%= "border-b-2 border-white" if current_page?(users_path) %>">
             <%= link_to "Users", users_path %>

@@ -1,0 +1,20 @@
+<%= form_with(model: genre, class: "contents") do |form| %>
+  <% if genre.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :name, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+    <%= form.text_field :name, class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white",
+                            placeholder: "Enter name" %>
+    <% genre.errors.full_messages_for(:name).each do |message| %>
+      <div class="text-red-500 mt-2"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="w-full flex justify-end mt-5">
+    <%= link_to "Cancel", genres_path,
+                  class: "py-2 px-3 bg-zinc-700 hover:bg-zinc-600 text-white rounded-lg mr-2" %>
+    <%= form.submit(params[:action] == "new" ? "Create" : "Update", class: "cursor-pointer py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg") %>
+  </div>
+<% end %>

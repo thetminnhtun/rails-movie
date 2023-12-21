@@ -5,7 +5,6 @@ class MoviesController < ApplicationController
   # GET /movies or /movies.json
   def index
     @movies = Movie.with_filter(params[:search])
-    # .includes(poster_attachment: :blob)
       .with_attached_poster
       .order(id: :desc)
       .page(params[:page])
@@ -27,6 +26,7 @@ class MoviesController < ApplicationController
   # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
+    # @movie.genre_ids = params[:movie][:genre_id]
 
     respond_to do |format|
       if @movie.save
@@ -41,6 +41,8 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
+    # @movie.genre_ids = params[:movie][:genre_id]
+
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
@@ -72,6 +74,17 @@ class MoviesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def movie_params
-    params.require(:movie).permit(:title, :description, :poster, :trailer_url, :release_date, :country, :director, :production, :duration_minutes)
+    params.require(:movie).permit(
+      :title,
+      :description,
+      :poster,
+      :trailer_url,
+      :release_date,
+      :country,
+      :director,
+      :production,
+      :duration_minutes,
+      genre_ids: [],
+    )
   end
 end

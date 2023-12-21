@@ -1,0 +1,40 @@
+<table class="min-w-full">
+  <thead class="bg-zinc-700 border-b uppercase">
+    <tr>
+      <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+        ID
+      </th>
+      <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+        Name
+      </th>
+      <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+        Created Date
+      </th>
+      <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @genres.each do |genre| %>
+      <tr class="bg-transparent border-b transition duration-300 ease-in-out hover:bg-zinc-800">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
+          <%= genre.id %>
+        </td>
+        <td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+          <%= genre.name %>
+        </td>
+        <td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+          <%= Date.parse(genre.created_at.to_s).strftime("%Y-%m-%d") %>
+        </td>
+        <td class="text-sm text-white font-light px-6 py-4 whitespace-nowrap">
+          <%= link_to "Edit", edit_genre_path(genre), class: "px-3 py-2 rounded bg-zinc-700 hover:bg-zinc-600 text-white" %>
+          <%= link_to "Delete", genre, data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?",
+                    }, class: "ml-2 px-3 py-2 rounded bg-red-500 hover:bg-red-600 text-white" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
