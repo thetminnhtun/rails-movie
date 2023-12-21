@@ -1,43 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<div class="mx-auto max-w-lg mt-10">
+  <h2 class="font-bold text-4xl my-5">Edit <%= resource_name.to_s.humanize %></h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field">
+      <%= f.label :email, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
+    </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
+    <div class="field mt-5">
+      <%= f.label :password, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.password_field :password, autocomplete: "new-password", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+    <div class="field mt-5">
+      <%= f.label :password_confirmation, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
+    </div>
+    <div class="field mt-5, class: "after:content-['*'] after:ml-1 after:text-red-500 block"">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
+    </div>
+    <div class="actions mt-5">
+      <%= f.submit "Update", class: "cursor-pointer py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg" %>
+    </div>
+  <% end %>
+  <h3 class="mt-10 font-bold text-lg">Delete my account</h3>
+  <div class="mt-5">
+    <%= button_to "Delete", 
+    registration_path(resource_name), 
+    data: { 
+      confirm: "Are you sure?", 
+      turbo_confirm: "Are you sure?" 
+    }, 
+    method: :delete,
+    class: "cursor-pointer py-2 px-3 bg-red-500 hover:bg-red-600 text-white rounded-lg" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
