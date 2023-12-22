@@ -28,6 +28,7 @@ namespace :seed do
         director: Faker::Name.name,
         production: ["20th Century Fox(US)", "Marvel", "DC"].sample,
         duration_minutes: [120, 90, 180].sample,
+        genre_ids: [1, 2, 3],
       )
 
       image = File.open(Rails.root.join("db/fixtures/images/#{images.sample}.jpg"))
