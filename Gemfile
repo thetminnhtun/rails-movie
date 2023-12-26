@@ -44,7 +44,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem "kaminari", "~> 1.2", ">= 1.2.2"
 gem "devise", "~> 4.9", ">= 4.9.3"
-gem "htmlbeautifier"
 gem "faker", "~> 3.2", ">= 3.2.2"
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -68,6 +67,7 @@ group :development do
   # gem "spring"
 
   gem "meta_request"
+  gem "htmlbeautifier"
 end
 
 group :test do
