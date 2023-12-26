@@ -3,6 +3,10 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">
+      <%= f.label :name, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
+    </div>
+    <div class="field mt-5">
       <%= f.label :email, class: "after:content-['*'] after:ml-1 after:text-red-500 block" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
     </div>
@@ -21,7 +25,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
     </div>
     <div class="field mt-5, class: "after:content-['*'] after:ml-1 after:text-red-500 block"">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.label :current_password, class: "block"%> <i>(we need your current password to confirm your changes)</i>
       <%= f.password_field :current_password, autocomplete: "current-password", class: "mt-2 w-full bg-zinc-700 py-2 px-3 rounded-lg focus:ring-white focus:border-white" %>
     </div>
     <div class="actions mt-5">
