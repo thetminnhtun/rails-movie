@@ -31,8 +31,9 @@ namespace :seed do
         genre_ids: [1, 2, 3],
       )
 
-      image = File.open(Rails.root.join("db/fixtures/images/#{images.sample}.jpg"))
-      movie.poster.attach(io: image, filename: "#{images.sample}.jpg")
+      filename = "#{images.sample}.jpg";
+      image = File.open(Rails.root.join("db/fixtures/images/#{filename}"))
+      movie.poster.attach(io: image, filename: "#{filename}")
     end
 
     puts "Created #{Movie.count} movies"
